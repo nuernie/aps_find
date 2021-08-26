@@ -5,9 +5,13 @@ npm-debug.*
 *.p8
 *.p12
 *.key
+*.xml
+*.iml
+*.pyc
 *.mobileprovision
 *.orig.*
 web-build/
 
 # macOS
 .DS_Store
+crawler/config.py
