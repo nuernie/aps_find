@@ -11,3 +11,10 @@ web-build/
 
 # macOS
 .DS_Store
+crawler/config.py
+crawler/.idea/crawler.iml
+crawler/.idea/misc.xml
+crawler/.idea/modules.xml
+crawler/.idea/vcs.xml
+crawler/.idea/inspectionProfiles/profiles_settings.xml
+crawler/__pycache__/places_api.cpython-38.pyc
