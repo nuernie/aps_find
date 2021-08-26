@@ -1,6 +1,6 @@
 import requests
 
-# function description here
+# function description here!
 def get_json_response(lat, lon, radius, establishment, api_key):
     url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+str(lat)+","+str(lon)+"&radius="+str(radius)+"&type="+str(establishment)+"&key="+str(api_key)
     payload={}
