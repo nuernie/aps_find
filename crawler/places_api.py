@@ -55,3 +55,8 @@ class Places:
         response = requests.request("GET", url, headers=headers, data=payload)
         json_response = response.text
         return json.loads(json_response)
+
+    def set_next_page_token(self, next_page_token):
+        self.next_page_token = next_page_token
+
+    # TODO add all getters and setters

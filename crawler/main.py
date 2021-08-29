@@ -1,69 +1,71 @@
 from places_api import Places
+import time
 
-# TODO clean all the shit up and itterate trough all the result pages if there more than 20 hits
+# TODO alles in eine fancy funktion packen den status der requests auch noch abfragen
+# TODO OK , INVALID_REQUEST / {'html_attributions': [], 'results': [], 'status': 'INVALID_REQUEST'}
 
-# safe json answer as file
-# with open('data.json', 'w', encoding='utf-8') as f:
-#    json.dump(json_response, f, ensure_ascii=False, indent=4)
-# load json data from file to economize api calls
-# with open('data.json') as f:
-#    json_response = json.load(f)
+
+def get_places_results(place_obj):
+    # results loop
+    try:
+        data_response = place_obj.google_api_nearby_search()["results"]
+    except:
+        print("there no results!")
+
+    for res in data_response:
+        print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+        try:
+            print("name:", res["name"])
+        except:
+            print("name is not accessible")
+        try:
+            print("location: ", res["geometry"]["location"])
+        except:
+            print("location is not accessible")
+        try:
+            print("business_status: ", res["business_status"])
+        except:
+            print("business_status is not accessible")
+        try:
+            print("places_id: ", res["place_id"])
+        except:
+            print("place_id is not accessible")
+        try:
+            print("rating", res["rating"])
+        except:
+            print("rating is not accessible")
+        try:
+            print("uer_rating_total: ", res["user_ratings_total"])
+        except:
+            print("user_rating_total is not accessible")
+        try:
+            print("opening_hours: ", res["opening_hours"])
+        except:
+            print("opening_hours are not accessible")
+        print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
+
+    while (True):
+        try:
+            print(place_obj.google_api_nearby_search()["next_page_token"])
+            print("There is one more page!")
+            next_page_token = place_obj.google_api_nearby_search()["next_page_token"]
+            place_obj.set_next_page_token(next_page_token)
+            time.sleep(5)
+            get_places_results(place_obj)
+        except:
+            print("there are no other pages")
+            break;
+
+
+
 
 # Create a Places Object
-place = Places(48.150342454, 11.5759139050, 2000, "", "bar and cafe and restaurant", "")
+#TODO mit Kreisen die ganze Fläche abdecken + type restaurant / bar / caffee alles durchsuchen!
+#TODO Schnittmengen bei duplikaten rauswerfen!
+
+place = Places(48.150342454, 11.5759139050, 200, "restaurant", "", "")
+get_places_results(place)
 
 
-# idea
-# check if there is a next_page
-# if yes start the loop again with new data
-"""
-def update_data():
-    print("updating api stream in case of next page")
-    try:
-        print(data["next_page_token"])
-        print("There is one more page!")
-        next_page_token = data["next_page_token"]
-        next_page_flag = 1
-    except:
-        print("there are no other pages")
-        next_page_flag = -1
 
 
-if(next_page_flag == 1):
-    update_data()
-"""
-
-# results loop
-for res in place.google_api_nearby_search()["results"]:
-    print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-
-    try:
-        print("name:", res["name"])
-    except:
-        print("name is not accessible")
-    try:
-        print("location: ", res["geometry"]["location"])
-    except:
-        print("location is not accessible")
-    try:
-        print("business_status: ",res["business_status"])
-    except:
-        print("business_status is not accessible")
-    try:
-        print("places_id: ",res["place_id"])
-    except:
-        print("place_id is not accessible")
-    try:
-        print("rating",res["rating"])
-    except:
-        print("rating is not accessible")
-    try:
-        print("uer_rating_total: ",res["user_ratings_total"])
-    except:
-        print("user_rating_total is not accessible")
-    try:
-        print("opening_hours: ",res["opening_hours"])
-    except:
-        print("opening_hours are not accessible")
-
-    print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
