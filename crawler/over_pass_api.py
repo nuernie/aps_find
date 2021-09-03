@@ -58,5 +58,4 @@ def get_amenity_info(area,amenity_type):
         print(e)
         return -1
 
-# call API
-get_amenity_info("München", "bar|cafe|pub|restaurant")
+
