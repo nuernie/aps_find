@@ -1,10 +1,11 @@
 import pandas as pd
-from db_login import *
-from sqlalchemy.exc import SQLAlchemyError
 import sqlalchemy
+from crawler.db_login import *
+from sqlalchemy.exc import SQLAlchemyError
 
 
-df = pd.DataFrame({'num_legs': [1, 4, 8, 0],
+
+df = pd.DataFrame({'num_legs': [12, 4, 8, 13],
                    'num_wings': [2, 0, 0, 0],
                    'num_specimen_seen': [10, 2, 1, 8]})
 print(df)

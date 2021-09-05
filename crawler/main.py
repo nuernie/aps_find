@@ -1,4 +1,4 @@
-from over_pass_api import *
+from crawler.over_pass_api import *
 
 # TODO bei Serverproblemen neue starten nach zeit ablauf !
 # TODO Overpass API Limits abchecken
