@@ -1,6 +1,6 @@
 import requests
 import pandas as pd
-
+import time
 
 def get_amenity_info(area, amenity_type):
     """
@@ -11,7 +11,7 @@ def get_amenity_info(area, amenity_type):
     :param amenity_type: str:
                          bar,restaurant,cafe
     :return pandas dataframe: df    if everything worked fine
-                         int: -1    if something went wrong
+
     """
     overpass_url = "http://overpass-api.de/api/interpreter"
     overpass_query = '[out:json];area[name="'+area+'"];' \
@@ -50,5 +50,6 @@ def get_amenity_info(area, amenity_type):
         except Exception as e:
             print("Problems occurred !:")
             print(e)
+            time.sleep(30)
             continue
         break
