@@ -6,6 +6,6 @@ from over_pass_api import *
 # TODO verknüpüfen + DOKU
 # TODO Error Handling bei over_pass_api anpassen!
 # TODO To many requests hier einen delay einbauen limits API anschauen!
-
+# Todo
 # call API
 get_amenity_info("München", "bar|cafe|pub|restaurant")
