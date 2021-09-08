@@ -39,12 +39,6 @@ def get_amenity_info(area, amenity_type):
                 df = df[['id', 'tags.name', 'lat', 'lon', 'tags.amenity', 'tags.opening_hours', 'tags.website',
                          'tags.contact:website', 'tags.website_1', 'tags.website2', 'tags.phone', 'tags.cuisine',
                          'tags.cuisine_1', 'tags.cuisine_2']]
-                print("")
-                print("pandas_df_info: ")
-                print("########################################################################################")
-                df.info()
-                print("########################################################################################")
-                df.to_csv('data_tables/muc_bars_restaurants_cafes.csv')
                 return df
 
         except Exception as e:
@@ -53,3 +47,25 @@ def get_amenity_info(area, amenity_type):
             time.sleep(30)
             continue
         break
+
+def transform_dataset(area, amenity_type):
+    df = get_amenity_info(area, amenity_type)
+    df.columns = [
+                  'id', 'name', 'lat', 'lon', 'amenity', 'opening_hours', 'website',
+                  'contact_website', 'website_1', 'website_2', 'phone', 'cuisine',
+                  'cuisine_1', 'cuisine_2'
+                  ]
+    df['website'] = df[['website','contact_website','website_1','website_2']].values.tolist()
+    df = df.drop(columns=['contact_website', 'website_1', 'website_2'])
+
+    df['cuisine'] = df[['cuisine','cuisine_1','cuisine_2']].values.tolist()
+    df = df.drop(columns=['cuisine_1', 'cuisine_2'])
+
+    print("")
+    print("pandas_df_info: ")
+    print("########################################################################################")
+    df.info()
+    print("########################################################################################")
+    df.to_csv('data_tables/muc_bars_restaurants_cafes.csv')
+    return df
+

@@ -9,4 +9,7 @@ from crawler.over_pass_api import *
 # TODO relative Pfade anpassen
 
 # call API
-get_amenity_info("München", "bar|cafe|pub|restaurant")
+# transform dataset
+transform_dataset("München", "bar|cafe|pub|restaurant")
+
+

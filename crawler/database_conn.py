@@ -29,4 +29,4 @@ except SQLAlchemyError as e:
 df_sql = pd.read_sql_table('locality_info', database_connection)
 print(df_sql)
 # 1 vCore CPU 3GHz ohne graphische oberfläche!
-# vnc console vnc viewer / 
+# vnc console vnc viewer /
