@@ -3,9 +3,9 @@ import sqlalchemy
 from crawler.db_login import *
 from sqlalchemy.exc import SQLAlchemyError
 
-
-
-df = pd.DataFrame({'num_legs': [12, 4, 8, 18],
+# you need to install mysql-connector as package
+df = pd.DataFrame({'num_legs': [777
+    , 4, 8, 18],
                    'num_wings': [2, 0, 0, 0],
                    'num_specimen_seen': [10, 2, 1, 8]})
 print(df)
