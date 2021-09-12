@@ -3,11 +3,6 @@ import sqlalchemy
 from crawler.db_login import *
 from sqlalchemy.exc import SQLAlchemyError
 
-<<<<<<< HEAD
-# you need to install mysql-connector as package
-df = pd.DataFrame({'num_legs': [777
-    , 4, 8, 18],
-=======
 # TODO: Differenciate if Database is accessed externally or via
 #       local host
 # TODO: Error Handling check if Data is writen to db or is accesible
@@ -17,7 +12,6 @@ df = pd.DataFrame({'num_legs': [777
 
 
 df = pd.DataFrame({'num_legs': [13, 4, 8, 18],
->>>>>>> 895e0f903bb1b011ff12eaf30604e798980776cc
                    'num_wings': [2, 0, 0, 0],
                    'num_specimen_seen': [10, 2, 1, 8]})
 print(df)
