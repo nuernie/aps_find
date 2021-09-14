@@ -1,6 +1,8 @@
 import requests
 import pandas as pd
 import time
+import numpy as np
+
 
 def get_amenity_info(area, amenity_type):
     """
@@ -48,19 +50,21 @@ def get_amenity_info(area, amenity_type):
             continue
         break
 
-def transform_dataset(area, amenity_type):
-    df = get_amenity_info(area, amenity_type)
+
+def transform_dataset(df):
     df.columns = [
                   'id', 'name', 'lat', 'lon', 'amenity', 'opening_hours', 'website',
                   'contact_website', 'website_1', 'website_2', 'phone', 'cuisine',
                   'cuisine_1', 'cuisine_2'
                   ]
-    df['website'] = df[['website','contact_website','website_1','website_2']].values.tolist()
-    df = df.drop(columns=['contact_website', 'website_1', 'website_2'])
+    # df['website'] = df[['website','contact_website','website_1','website_2']].values.tolist()
+    # df = df.drop(columns=['contact_website', 'website_1', 'website_2'])
 
-    df['cuisine'] = df[['cuisine','cuisine_1','cuisine_2']].values.tolist()
-    df = df.drop(columns=['cuisine_1', 'cuisine_2'])
+    # df['cuisine'] = df[['cuisine','cuisine_1','cuisine_2']].values.tolist()
+    # df = df.drop(columns=['cuisine_1', 'cuisine_2'])
 
+    # aps price add column
+    df["aps_price"] = np.nan
     print("")
     print("pandas_df_info: ")
     print("########################################################################################")

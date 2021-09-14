@@ -1,6 +1,5 @@
 from crawler.over_pass_api import *
-
-# TODO bei Serverproblemen neue starten nach zeit ablauf !
+from database_conn import*
 # TODO Overpass API Limits abchecken
 # TODO Pandas Dataframe push to Database XAMPP! Methoden richtig
 # TODO verknüpüfen + DOKU
@@ -9,7 +8,13 @@ from crawler.over_pass_api import *
 # TODO relative Pfade anpassen
 
 # call API
+df = get_amenity_info("München", "bar|cafe|pub|restaurant")
 # transform dataset
-transform_dataset("München", "bar|cafe|pub|restaurant")
+df = transform_dataset(df)
+# write to db
+write_to_db(df)
+# read from db
+df = read_from_db()
+
 
 
