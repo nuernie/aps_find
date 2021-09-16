@@ -9,7 +9,7 @@ from sqlalchemy.exc import SQLAlchemyError
 # TODO: Error Handling check if Data is writen to db or is accesible
 # TODO: Server auf IONOS mieten und da die Datenbank aufziehen
 #       Vertragslaufzeit 12 Monate / 30 Tage geldzurück garantie
-#       Vorher den Vertrag kündigen! Mal ausprobieren!
+#       Vorher den Vertrag kündigen! Mal ausprobieren! 
 
 def database_conn():
     return sqlalchemy.create_engine('mysql+mysqlconnector://{0}:{1}@{2}/{3}'.

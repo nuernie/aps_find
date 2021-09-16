@@ -1,4 +1,4 @@
-# connect to mysql db / login_data
+# connect to mysql db / login_data 
 database_username = 'app_user'
 database_password = '528400'
 database_ip       = '127.0.0.1'

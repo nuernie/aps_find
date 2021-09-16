@@ -36,7 +36,7 @@ def get_amenity_info(area, amenity_type):
             else:
                 print("Server: OK!")
                 data = response.json()
-                # Flatten data and transport to pandas df
+                # Flatten data and transport to pandas df 
                 df = pd.json_normalize(data, record_path=['elements'])
                 df = df[['id', 'tags.name', 'lat', 'lon', 'tags.amenity', 'tags.opening_hours', 'tags.website',
                          'tags.contact:website', 'tags.website_1', 'tags.website2', 'tags.phone', 'tags.cuisine',

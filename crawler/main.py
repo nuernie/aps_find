@@ -13,7 +13,7 @@ df = get_amenity_info("München", "bar|cafe|pub|restaurant")
 df = transform_dataset(df)
 # write to db
 write_to_db(df)
-# read from db
+# read from db 
 df = read_from_db()
 
 
